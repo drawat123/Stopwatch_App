@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Shapes 1.15
 import com.company.stopwatch 1.0
 
 ApplicationWindow {
@@ -91,12 +92,25 @@ ApplicationWindow {
             }
         }
 
-        Rectangle {
+        Shape {
             width: lapDataWidth
             height: 2
             anchors.left: lapsView.left
             visible: lapDetailsData.count > 0
-            color: lapLabelColor
+            ShapePath {
+                strokeWidth: 2
+                strokeColor: lapLabelColor
+                startX: 0
+                startY: 0
+                PathLine {
+                    x: lapDataWidth
+                    y: 0
+                }
+                PathLine {
+                    x: 0
+                    y: 0
+                }
+            }
         }
 
         ListView {
